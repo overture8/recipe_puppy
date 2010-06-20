@@ -1,6 +1,47 @@
-= recipe_puppy
+= Recipe Puppy
 
-Description goes here.
+This is a ruby wrapper for the recipepuppy.com API.  Search for recipes by recipe name and/or by ingredients.
+
+{API Details}[http://www.recipepuppy.com/about/api/]
+
+== Installation
+
+gem install recipe_puppy
+
+== Usage
+
+  require 'rubygems'
+  require 'recipe_puppy'
+
+  # Simple Search
+  steakrecipes = RecipePuppy::Recipe.search_for("steak")
+  steakrecipes.get['results'].each do |recipe|
+    puts recipe['title']
+    puts recipe['href']
+    puts recipe['ingredients']
+    puts recipe['thumbnail']
+  end
+
+  # Chaining Search with_ingredients
+  steakrecipes = RecipePuppy::Recipe.search_for("steak").with_ingredients("onions, mushrooms")
+  steakrecipes.get['results'].each do |recipe|
+    puts recipe['title']
+    puts recipe['href']
+    puts recipe['ingredients']
+    puts recipe['thumbnail']
+  end
+
+  # All methods can be chained as follows
+  RecipePuppy::Recipe.search_for("steak").with_ingredients("onions, mushrooms").get['results'].each do |recipe|
+    puts recipe['title']
+    puts recipe['href']
+    puts recipe['ingredients']
+    puts recipe['thumbnail']
+  end
+
+== Dependencies
+
+JSON
 
 == Note on Patches/Pull Requests
  
