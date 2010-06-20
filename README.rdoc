@@ -6,7 +6,7 @@ This is a ruby wrapper for the recipepuppy.com API.  Search for recipes by recip
 
 == Installation
 
-gem install recipe_puppy
+  gem install recipe_puppy
 
 == Usage
 
